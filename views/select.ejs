@@ -1,0 +1,101 @@
+<html>
+
+<head>
+  <title>Dashboard</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <!-- For DataTables -->
+  <script type="text/javascript" charset="utf8"
+    src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body>
+	<div class="limiter">
+		<a href="/logout">Logout</a>
+		<center>
+			<h1>Profile page</h1>
+		</center>
+		<hr />
+        <button class="btn btn-primary select" > Click</button>
+	
+	</div>
+
+    <div class="container">
+        <h2>Edit Data</h2>
+        <form action="/update_user" method="PUT" id="update_user">
+
+            <div class="form-group">
+                <label for="text">Name:</label>
+                <input type="text" class="form-control input" id="update_name" placeholder="Enter Name" name="product" required>
+            </div>
+
+            <div class="form-group">
+                <label for="text">Email:</label>
+                <input type="email" class="form-control input" id="update_email" placeholder="Enter email" name="product" required>
+              </div>
+
+             <div class="form-group">
+                <label for="price">Address:</label>
+                <input type="number" class="form-control input" id="update_address" placeholder="Enter Address" name="price">
+              </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control input" class="" id="update_id" placeholder="Enter Id" name="id" hidden required>
+          </div>
+
+          <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="number" class="form-control input" id="update_price" placeholder="Enter price" name="price">
+          </div>
+
+          <div class="form-group">
+            <button type="submit" id="update_table" class="btn btn-primary">Purchase</button>
+          </div>
+
+        </form>
+      </div>
+
+
+      <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div className=' col-sm-2 card' style="margin-right: 0.1em; width:20em">
+                        <img class="card-img-top"  id="img" style="width: 100%; height:350px" alt="Card image cap" ></img>
+                            <div class="card-body">
+                                    <h5 class="card-text" id="card-name"><span>Name: </span></h5>
+                                    <p class="card-text" id="card-price"><span>Price: </span></p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+      </div>
+
+      <!--===============================================================================================-->
+      <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+      <!--===============================================================================================-->
+      <script src="vendor/animsition/js/animsition.min.js"></script>
+      <!--===============================================================================================-->
+      <script src="vendor/bootstrap/js/popper.js"></script>
+      <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+      <!--===============================================================================================-->
+      <script src="vendor/select2/select2.min.js"></script>
+      <!--===============================================================================================-->
+      <script src="vendor/daterangepicker/moment.min.js"></script>
+      <script src="vendor/daterangepicker/daterangepicker.js"></script>
+      <!--===============================================================================================-->
+      <script src="vendor/countdowntime/countdowntime.js"></script>
+      <!--===============================================================================================-->
+      <script type="text/javascript" src="../js/idseletor.js"></script>
+      <script type="text/javascript" src="../js/update.js"></script>
+</body>
+
+</html>
