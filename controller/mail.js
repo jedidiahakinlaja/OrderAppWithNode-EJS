@@ -52,6 +52,7 @@ exports.sendMail= async (req,res)=>{
 
         const result = await transporter.sendMail(mailOptions);
         console.log('Email sent...', result);
+        res.redirect('/profile');
     } catch (error) {
         console.log('Error:', error);
     }

@@ -1,24 +1,26 @@
 $(document).ready(function(){
 
-    $('#fromCLick').on('click', function (e) {
-
+    $('#fromCLick').click(function (e) {
+         alert('email sent');
       var data = $('#myForm').serialize();
       // debugger;
        console.log(JSON.stringify(data));
+      
        e.preventDefault();
         console.log(data);
         
         // debugger;
         $.ajax({
-          url: `/sendInfo`,
-          type: 'PUT',
-          data: data,
+            type: 'POST',
+            url: `/sendInfo`,
+            method: 'Post',
+           data: data,
           success: function (data) {
-            console.log('updated successfully');
-            window.location.reload()
+            alert('email sent');
+            window.location.href='/profile'
           },
           error: function () {
-            alert('No data');
+            console.log('error');
           }
         });
       });
