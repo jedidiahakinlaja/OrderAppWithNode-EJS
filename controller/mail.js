@@ -4,6 +4,8 @@ const myEnv = dotenv.config()
 const nodemailer = require('nodemailer');
 const { google } = require('googleapis');
 
+
+
 const OAuth2 = google.auth.OAuth2;
 console.log(process.env)
 
@@ -22,8 +24,10 @@ const oauth2Client = new OAuth2(
 
 oauth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 
-async function sendMail() {
+
+exports.sendMail= async (req,res)=>{
     try {
+        const {name, title, email,status}=req.body
         const accessToken = await oauth2Client.getAccessToken();
 
         const transporter = nodemailer.createTransport({
@@ -40,9 +44,9 @@ async function sendMail() {
 
         const mailOptions = {
             from: 'akinlajajedidiah@gmail.com',
-            to: 'jedtechelectronics@gmail.com',
-            subject: 'Test Email',
-            text: 'Hello from nodemailer!',
+            to: email,
+            subject: `Purchase of ${title}`,
+            text: ` Dear ${name}. your Purchase of ${title} is  ${status}`,
             // html:<p>verify your email addresss</p>
         };
 
@@ -52,6 +56,4 @@ async function sendMail() {
         console.log('Error:', error);
     }
 }
-
-sendMail();
 

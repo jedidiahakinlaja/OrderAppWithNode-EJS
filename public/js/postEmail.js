@@ -1,24 +1,26 @@
 $(document).ready(function(){
 
-        $('#myForm').click(function (e) {
-            alert('name')
-            // e.preventDefault();
-            // var name = $('td[name="name"]');
-            // var email = $('td[name="email"]');
-        
+    $('#fromCLick').on('click', function (e) {
 
-            // $.ajax({
-            //     method: 'POST',
-            //     url: '',
-            //     data: {
-            //         name,
-            //         email,
-            //     },
-            //     success: (res) => {
-            //         // do something
-            //         console.log(res);
-            //     }
-            // });
+      var data = $('#myForm').serialize();
+      // debugger;
+       console.log(JSON.stringify(data));
+       e.preventDefault();
+        console.log(data);
+        
+        // debugger;
+        $.ajax({
+          url: `/sendInfo`,
+          type: 'PUT',
+          data: data,
+          success: function (data) {
+            console.log('updated successfully');
+            window.location.reload()
+          },
+          error: function () {
+            alert('No data');
+          }
         });
+      });
 
 });

@@ -117,26 +117,44 @@
 					<tr>
 						<% purchaseList.forEach(output=> { %>
 							<tr>
-								<form action=""  id="myForm" method="POST">
-										<td name="name">
+								<form action="/sendInfo" id="myForm"  method="POST">
+										<td id="name"> 
+											<input name="name" value="<%= output.name %>" hidden>
 											<%= output.name %>
 										</td>
 										<td name="email">
+											<input name="email" value="<%= output.email %>" hidden>
 											<%= output.email %>
 										</td>
 										<td name="title">
+											<input name="title" value="<%= output.title %>" hidden>
 											<%= output.title %>
 										</td>
-										<td name="address">
+										<td>
+											<input name="address" value="<%= output.address %>" hidden>
 											<%= output.address %>
 										</td>
 										<td name="price">
+											<input name="price" value="<%= output.price %>" hidden> 
 											<%= output.price %>
 										</td>
 										<td >
 											<img style="width: 100%; height:80px" name="image" src=<%= output.image%> alt="Card image cap" ></img>
+											<input name="image" value="<%= output.image%>" hidden>
 										</td>
 												<td name="status">
+
+														<input name="status" value="
+														<% if (output.DateCurrent.slice(0,15) == Date().slice(0,15)) { %>
+															In Progress
+														<% } else if (output.DispatchTime.slice(0,15) == Date().slice(0,15)) { %>
+															Dispatched
+														<% } else if (output.DelivertyTime.slice(0,15) == Date().slice(0,15)) { %>
+															Delivered
+														<% } else { %>
+															Delivered
+														<% } %> ">
+
 													<% if (output.DateCurrent.slice(0,15) == Date().slice(0,15)) { %>
 														In Progress
 													<% } else if (output.DispatchTime.slice(0,15) == Date().slice(0,15)) { %>
@@ -153,7 +171,7 @@
 
 												
 										<td>
-											<button  id="myForm" class="btn btn-primary">Send Email</button>
+											<button  id="fromCLick" class="btn btn-primary">Send Email</button>
 										</td>
 
 							    </form>
