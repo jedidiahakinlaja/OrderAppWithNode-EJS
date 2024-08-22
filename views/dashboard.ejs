@@ -18,19 +18,13 @@
 </head>
 
 <body>
-	<div class="limiter">
-		<a href="logout">Logout</a>
-		<center>
-			<h1>Profile page</h1>
-		</center>
-		<hr />
-		<center>
-			<h2>Hi <%=user.name%>
-			</h2> Your Email Id is <%=user.email%>
-		</center>
+ 
+  <div class="limiter mt-2">
+		<button class="btn btn-primary"><a href="logout" style="color:white">Back to Login</a></button>
+		    <center>
 	</div>
 
-
+	<hr>
 
   <div class="container-fluid">
 	<div class="row">
@@ -48,144 +42,6 @@
   </div>
 	
 		<hr>	
-
-	
-		<% if(user.role==='admin'){ %>
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-4 curve">
-						<form class="validate-form" action="/postCart" method="POST">
-							<span class="login100-form-title p-b-26">
-								Add List
-							</span>
-	
-							<div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
-								<input class="input100" type="number" name="id">
-								<span class="focus-input100" data-placeholder="Id"></span>
-							</div>
-	
-							<div class="wrap-input100 validate-input">
-								<input class="input100" type="text" name="product">
-								<span class="focus-input100" data-placeholder="product"></span>
-							</div>
-	
-							<div class="wrap-input100 validate-input">
-								<input class="input100" type="number" name="data">
-								<span class="focus-input100" data-placeholder="data"></span>
-							</div>
-	
-							<div class="wrap-input100 validate-input">
-								<input class="input100" type="number" name="price">
-								<span class="focus-input100" data-placeholder="price"></span>
-							</div>
-	
-							<div class="container-login100-form-btn">
-								<div class="wrap-login100-form-btn">
-									<div class="login100-form-bgbtn"></div>
-									<button class="login100-form-btn" type="submit">
-										Add List
-									</button>
-								</div>
-							</div>
-						</form>
-					</div>
-	
-	
-					<div class="offset-md-3 col-sm-4 curve">
-						<form class="validate-form" action="/addUser" method="POST">
-							<span class="login100-form-title p-b-26">
-								Add User
-							</span>
-	
-							<div class="wrap-input100">
-								<input class="input100" type="text" name="name">
-								<span class="focus-input100" data-placeholder="Name"></span>
-							</div>
-	
-							<div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
-								<input class="input100" type="text" name="email">
-								<span class="focus-input100" data-placeholder="Email"></span>
-							</div>
-	
-							<div class="wrap-input100 validate-input" data-validate="Enter password">
-								<span class="btn-show-pass">
-									<i class="zmdi zmdi-eye"></i>
-								</span>
-								<input class="input100" type="password" name="password">
-								<span class="focus-input100" data-placeholder="Password"></span>
-							</div>
-	
-							<div class="validate-input">
-								<select name="role" id="role">
-									<option value="admin">Admin</option>
-									<option value="user">User</option>
-								  </select>
-							</div>
-	
-	
-							<div class="container-login100-form-btn">
-								<div class="wrap-login100-form-btn">
-									<div class="login100-form-bgbtn"></div>
-									<button class="login100-form-btn" type="submit">
-										Add User
-									</button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-		</div> 
-
-		<hr>
-
-		<div class="container" >
-
-				<h1>User List</h1>
-			<table class="table table-bordered" id="myTable" style="margin-bottom: 12px;">
-				<thead>
-					<tr>
-						<th>Name</th>
-						<th>Email</th>
-						<th>Role</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% userList.forEach(output=> { %>
-						<tr>
-							<td>
-								<%= output.name %>
-							</td>
-							<td>
-								<%= output.email %>
-							</td>
-							<td>
-								<%= output.role %>
-							</td>
-							
-						</tr>
-						<% }); %>
-	
-				</tbody>
-			</table>
-	
-		</div>	
-
-
-<hr>
-
-
-		  <% }
-		  else{ %>  
-			<div></div>
-		 <% } %>
-
-
-		
-
-
-	
-
-
       <!--===============================================================================================-->
       <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
       <!--===============================================================================================-->

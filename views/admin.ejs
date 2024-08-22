@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Login V2</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	
+	<div class="limiter">
+		<a href="logout">Logout</a>
+		<center>
+			<h1>Profile page</h1>
+		</center>
+		<hr />
+		<center>
+			<h2>Hi <%=user.name%>
+			</h2> Your Email Id is <%=user.email%>
+		</center>
+	</div>
+
+
+	<div class="container-fluid">
+		<div class="row">
+			<% response.forEach(output=> { %>
+				<div className=' col-sm-2 card' style="margin-right: 20px;   width:9em">
+					<img class="card-img-top"  style="width: 100%; height:300px" src=<%= output.image%> alt="Card image cap" ></img>
+						<div class="card-body">
+								<h5 class="card-text">Name: <%= output.title %></h5>
+								<p class="card-text">Rating:</p>
+								<button href="/select" id="<%=output._id %>" class="btn btn-primary select ">View</button>
+						</div>
+				</div>
+				<% }); %>
+		</div>
+	  </div>
+		
+			<hr>	
+	
+		
+			
+			<div class="container" >
+	
+					<h1>User List</h1>
+				<table class="table table-bordered" id="myTable" style="margin-bottom: 12px;">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Email</th>
+							<th>Role</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% userList.forEach(output=> { %>
+							<tr>
+								<td>
+									<%= output.name %>
+								</td>
+								<td>
+									<%= output.email %>
+								</td>
+								<td>
+									<%= output.role %>
+								</td>
+								
+							</tr>
+							<% }); %>
+		
+					</tbody>
+				</table>
+		
+			</div>	
+	
+	
+	<hr>
+	
+	
+
+	<div class="container">
+		<div class="row">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Email</th>
+						<th>Title</th>
+						<th>Address</th>
+						<th>Price</th>
+						<th>image</th>
+						<th>Action</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<% purchaseList.forEach(output=> { %>
+							<tr>
+								<form action=""  id="myForm" method="POST">
+										<td name="name">
+											<%= output.name %>
+										</td>
+										<td name="email">
+											<%= output.email %>
+										</td>
+										<td name="title">
+											<%= output.title %>
+										</td>
+										<td name="address">
+											<%= output.address %>
+										</td>
+										<td name="price">
+											<%= output.price %>
+										</td>
+										<td >
+											<img style="width: 100%; height:80px" name="image" src=<%= output.image%> alt="Card image cap" ></img>
+										</td>
+												<td name="status">
+													<% if (output.DateCurrent.slice(0,15) == Date().slice(0,15)) { %>
+														In Progress
+													<% } else if (output.DispatchTime.slice(0,15) == Date().slice(0,15)) { %>
+														Dispatched
+													<% } else if (output.DelivertyTime.slice(0,15) == Date().slice(0,15)) { %>
+														Delivered	
+													<% } else { %>
+														Delivered
+													<% } %>
+
+												</td>
+
+											
+
+												
+										<td>
+											<button  id="myForm" class="btn btn-primary">Send Email</button>
+										</td>
+
+							    </form>
+							</tr>
+							<% }); %>
+		
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+	<script type="text/javascript" src="../js/action.js"></script>
+	<script type="text/javascript" src="../js/postEmail.js"></script>
+
+</body>
+</html>

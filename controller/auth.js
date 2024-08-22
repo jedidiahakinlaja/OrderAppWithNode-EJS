@@ -4,6 +4,7 @@ const bodyParser = require("body-parser")
 const bcrypt = require("bcryptjs")
 const User = require("../model/user")
 const Cart = require("../model/shoppingcartModel")
+const Purchase = require('../model/purchaseModel')
 const jwt = require("jsonwebtoken")
 const config = require("../config")
 const LocalStorage = require("node-localstorage").LocalStorage
@@ -199,15 +200,12 @@ exports.postProfile=(req,res)=>{
 
             Cart.find()
             .then(response => {
-                if (!response) {
-                    res.redirect("/")
-                }
                 User.find()
                 .then(userList=>{
-                    if(!userList){
-                        res.redirect("/")
-                    }
-                    res.render("dashboard.ejs", { user, response, userList })
+                    Purchase.find()
+                    .then(purchaseList=>{
+                        res.render("admin.ejs", { user, response, userList,purchaseList })
+                    })
                 })
               
                 
@@ -224,20 +222,6 @@ exports.postProfile=(req,res)=>{
         })
     })
 }
-
-
-// exports.getCart = (req, res) => {
-    
-//     Cart.find()
-//         .then(response => {
-//             // res.render("dashboard.ejs", { response })
-//             console.log(response);
-//         })
-//         .catch(err => {
-//             return res.send({ msg: "Error occured" })
-//         })
-// }
-
 
 
 

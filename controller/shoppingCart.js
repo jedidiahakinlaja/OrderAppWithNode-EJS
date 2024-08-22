@@ -36,6 +36,18 @@ exports.getCart = (req, res) => {
         })
 }
 
+
+exports.getCartDash=(req, res) => {
+    
+    Cart.find()
+        .then(response => {
+            res.render("dashboard.ejs", {response })
+        })
+        .catch(err => {
+            return res.send({ msg: "Error occured" })
+        })
+}
+
 exports.getCartId = (req, res) => {
 
     const { locId } = req.params;
